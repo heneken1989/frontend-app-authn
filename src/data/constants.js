@@ -4,9 +4,9 @@ export const REGISTER_PAGE = '/register';
 export const REGISTER_EMBEDDED_PAGE = '/register-embedded';
 export const RESET_PAGE = '/reset';
 export const AUTHN_PROGRESSIVE_PROFILING = '/welcome';
-export const DEFAULT_REDIRECT_URL = '/dashboard';
+export const DEFAULT_REDIRECT_URL = '/'; // Redirect to Learning MFE root instead of dashboard
 export const RECOMMENDATIONS = '/recommendations';
-export const PASSWORD_RESET_CONFIRM = '/password_reset_confirm/:token/';
+export const PASSWORD_RESET_CONFIRM = '/password_reset_confirm/:uidb36-:token/';
 export const PAGE_NOT_FOUND = '/notfound';
 export const ENTERPRISE_LOGIN_URL = '/enterprise/login';
 

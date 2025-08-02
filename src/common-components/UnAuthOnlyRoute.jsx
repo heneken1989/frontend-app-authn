@@ -25,7 +25,9 @@ const UnAuthOnlyRoute = ({ children }) => {
 
   if (isReady) {
     if (authUser && authUser.username) {
-      global.location.href = getConfig().LMS_BASE_URL.concat(DEFAULT_REDIRECT_URL);
+      // Redirect to MFE_BASE_URL instead of LMS_BASE_URL
+      const redirectUrl = getConfig().BASE_URL || getConfig().LMS_BASE_URL;
+      global.location.href = redirectUrl;
       return null;
     }
 

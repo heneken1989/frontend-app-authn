@@ -31,7 +31,12 @@ const RedirectLogistration = (props) => {
     if (finishAuthUrl && !redirectUrl.includes(finishAuthUrl)) {
       finalRedirectUrl = getConfig().LMS_BASE_URL + finishAuthUrl;
     } else {
-      finalRedirectUrl = redirectUrl;
+      // Use MFE_BASE_URL instead of LMS_BASE_URL for default redirects
+      if (redirectUrl === getConfig().LMS_BASE_URL + '/dashboard' || redirectUrl === '/dashboard') {
+        finalRedirectUrl = getConfig().BASE_URL || getConfig().LMS_BASE_URL;
+      } else {
+        finalRedirectUrl = redirectUrl;
+      }
     }
 
     // Redirect to Progressive Profiling after successful registration
@@ -42,7 +47,7 @@ const RedirectLogistration = (props) => {
       if (registrationEmbedded) {
         window.parent.postMessage({
           action: REDIRECT,
-          redirectUrl: getConfig().POST_REGISTRATION_REDIRECT_URL,
+          redirectUrl: getConfig().POST_REGISTRATION_REDIRECT_URL || getConfig().BASE_URL,
         }, host);
         return null;
       }
